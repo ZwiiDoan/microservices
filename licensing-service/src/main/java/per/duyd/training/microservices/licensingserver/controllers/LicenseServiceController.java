@@ -3,9 +3,9 @@ package per.duyd.training.microservices.licensingserver.controllers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import per.duyd.training.microservices.licensingserver.config.LicensingServiceConfig;
 import per.duyd.training.microservices.licensingserver.model.License;
 import per.duyd.training.microservices.licensingserver.services.LicenseService;
 
@@ -21,18 +21,18 @@ public class LicenseServiceController {
 
     private final LicenseService licenseService;
 
-    @Value("${my.custom.property}")
-    private int myCustomProperty;
+    private final LicensingServiceConfig config;
 
     @Autowired
-    public LicenseServiceController(LicenseService licenseService) {
+    public LicenseServiceController(LicenseService licenseService, LicensingServiceConfig config) {
         this.licenseService = licenseService;
+        this.config = config;
     }
 
     @RequestMapping(value = "/custom-properties", method = RequestMethod.GET)
     public Map<String, String> showCustomProperties() {
         Map<String, String> customProperties = new HashMap<>();
-        customProperties.put("myCustomProperty", String.valueOf(myCustomProperty));
+        customProperties.put("myCustomProperty", config.getProperty());
         return customProperties;
     }
 
