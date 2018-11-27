@@ -6,7 +6,7 @@ echo "CONFIG_SERVER_PORT=$CONFIG_SERVER_PORT"
 echo "CONFIG_SERVER_URI=$CONFIG_SERVER_URI"
 echo "DATABASE_PORT=$DATABASE_PORT"
 echo "PROFILE=$PROFILE"
-echo "ENCRYPT_KEY=$ENCRYPT_KEY"
+#echo "ENCRYPT_KEY=$ENCRYPT_KEY"
 
 echo "********************************************************"
 echo "Waiting for the configuration server to start on port $CONFIG_SERVER_PORT"
@@ -32,6 +32,6 @@ echo "Starting License Server with Configuration Service: $CONFIG_SERVER_URI"
 echo "********************************************************"
 java -cp app:app/lib/* \
     -Dspring.profiles.active=$PROFILE \
-    -Dspring.cloud.config.uri=$CONFIGSERVER_URI \
+    -Dspring.cloud.config.uri=$CONFIG_SERVER_URI \
     -DENCRYPT_KEY=$ENCRYPT_KEY \
     per.duyd.training.microservices.licensingserver.LicensingServiceApplication
