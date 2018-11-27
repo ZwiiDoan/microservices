@@ -1,0 +1,10 @@
+version: '3'
+services:
+  database:
+    image: postgres:11
+    ports:
+    - "5432:5432"
+    environment:
+      POSTGRES_USER: "miroservices_prod"
+      POSTGRES_PASSWORD: "miroservices_prod"
+      POSTGRES_DB: "miroservices_prod"

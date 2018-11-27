@@ -1,0 +1,26 @@
+version: '3'
+services:
+  config-server:
+    image: duyd/config-server:latest
+    ports:
+      - "8888:8888"
+    environment:
+      ENCRYPT_KEY: "IAMSYMMETRIC"
+  database:
+    image: postgres:11
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "microservices"
+      POSTGRES_PASSWORD: "microservices"
+      POSTGRES_DB: "microservices"
+  licensing-serivce:
+    image: duyd/licensing-service:latest
+    ports:
+      - "8080:8080"
+    environment:
+      CONFIG_SERVER_PORT: "8888"
+      DATABASE_PORT: "5432"
+      ENCRYPT_KEY: "IAMSYMMETRIC"
+      PROFILE: "default"
+      CONFIGSERVER_URI: "http://config-server:8888"
