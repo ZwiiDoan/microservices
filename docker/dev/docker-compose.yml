@@ -1,0 +1,21 @@
+#version: '3' This version has not supported extends service yet
+version: '2'
+services:
+  config-server:
+    extends:
+      file: ../default/docker-compose.yml
+      service: config-server
+  database:
+    extends:
+      file: ../default/docker-compose.yml
+      service: database
+    environment:
+      POSTGRES_USER: "microservices_dev"
+      POSTGRES_PASSWORD: "microservices_dev"
+      POSTGRES_DB: "microservices_dev"
+  licensing-service:
+    extends:
+      file: ../default/docker-compose.yml
+      service: licensing-service
+    environment:
+      PROFILE: "dev"

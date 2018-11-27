@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   config-server:
     image: duyd/config-server
@@ -14,7 +14,7 @@ services:
       POSTGRES_USER: "microservices"
       POSTGRES_PASSWORD: "microservices"
       POSTGRES_DB: "microservices"
-  licensing-serivce:
+  licensing-service:
     image: duyd/licensing-service
     ports:
       - "8080:8080"
