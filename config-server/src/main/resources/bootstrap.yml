@@ -1,7 +1,11 @@
-#This does not work in application.properties or application.yml
+#spring.cloud.config.server.encrypt.enabled does not work in application.properties or application.yml
 #https://stackoverflow.com/questions/47470031/failed-to-disable-decryption-server-side-in-spring-cloud-config-server
 spring:
   cloud:
     config:
+#      discovery:
+#        enabled: true
       server:
         encrypt.enabled: false
+  application:
+    name: configserver
