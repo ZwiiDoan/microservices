@@ -11,8 +11,6 @@
 
     <artifactId>config-server</artifactId>
 
-    <name>configserver</name>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
